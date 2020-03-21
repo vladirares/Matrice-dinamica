@@ -23,7 +23,7 @@
 1584789862 d:\programming\projects\matrice\matrice.h
 	"Linie.h"
 
-1584786780 source:d:\programming\projects\matrice\matrice-dinamica\element.cpp
+1584798555 source:d:\programming\projects\matrice\matrice-dinamica\element.cpp
 	"Element.h"
 
 1584798361 d:\programming\projects\matrice\matrice-dinamica\element.h
@@ -35,7 +35,7 @@
 1584799501 d:\programming\projects\matrice\matrice-dinamica\linie.h
 	"Element.h"
 
-1584792018 source:d:\programming\projects\matrice\matrice-dinamica\matrice.cpp
+1584796229 source:d:\programming\projects\matrice\matrice-dinamica\matrice.cpp
 	<math.h>
 	"Matrice.h"
 

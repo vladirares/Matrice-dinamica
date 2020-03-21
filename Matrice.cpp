@@ -8,8 +8,8 @@ Matrice::Matrice(int noLinii,int noCol,bool zeros){
     this->prim = NULL;
     this->ultim = NULL;
 
-    if(zeros){
-        for(int i = 0; i < noLinii; i++){
+    if(zeros){                                  //daca zeros este true introduce linie cu linie
+        for(int i = 0; i < noLinii; i++){       //cu ajutorul unui pointer zerouri in matrice
             Linie *line = new Linie();
             for(int j = 0; j < noCol; j++){
                 line->pushRight(0);
@@ -22,32 +22,25 @@ Matrice::Matrice(int noLinii,int noCol,bool zeros){
 Matrice::Matrice(const Matrice& mat){
     this->noLinii = mat.noLinii;
     this->noCol = mat.noCol;
-
     this->prim = NULL;
     this->ultim = NULL;
 
-    /*this->prim = mat.prim;
-    this->ultim = mat.ultim;*/
-
-
-    Linie *aux = mat.prim;
-
-    for(int i=0; i < noLinii ; i++){
-        this->insertLine(*aux);
+    Linie *aux = mat.prim;                  //introducem linie cu linie in matricea noua
+    for(int i=0; i < noLinii ; i++){        //cu ajutorul pointerului care parcurge
+        this->insertLine(*aux);             //matricea care trebuie copiata
         aux = aux->getNext();
     }
-
 }
 
-void Matrice::insertLine(Linie linie){
-    Linie *pointerLine = new Linie(linie);
-    if(prim == NULL){
-        prim = ultim = pointerLine;
+void Matrice::insertLine(Linie linie){      //metoda privata
+    Linie *pointerLine = new Linie(linie);  //facem un pointer catre o noua linie;
+    if(prim == NULL){                       //daca matricea este goala (cum este in urma
+        prim = ultim = pointerLine;         //constructorului cu parametrii cu zeros==false)
     }else{
-        ultim->setNext(pointerLine);
-        pointerLine->setPrev(ultim);
-        ultim = pointerLine;
-    }
+        ultim->setNext(pointerLine);        //daca matricea nu este goala refacem legaturile
+        pointerLine->setPrev(ultim);        //dintre linii. De observat ca insertLine() nu incrementeaza
+        ultim = pointerLine;                //length , deoarece lungimea este setata de dinainte iar
+    }                                       //aceasta nu poate fi apelata din afara (fiind privata)
 }
 
 int Matrice::getNoLinii(){
@@ -89,57 +82,57 @@ float Matrice::getDeterminant(){
 
 }
 
-bool Matrice::isInvertible(){
-    if(this->getDeterminant() == 0)
+bool Matrice::isInvertible(){                   //daca determinantul este diferit de 0
+    if(this->getDeterminant() == 0)             //matricea este inversabila
         return false;
     return true;
 }
 
 
 void Matrice::removeLineAt(int index){
-    if(prim==NULL || index >= this->getNoLinii() || index < 0){
-        //arunca exceptie
-    }else if(index == 0){
+    if(prim==NULL || index >= this->getNoLinii() || index < 0){ //verificam daca indexul este in interiorul liniei
+        //arunca exceptie                                       //daca nu este aruncam exceptie de out of range
+    }else if(index == 0){                                       //verificam daca este prima linie
         Linie *toDelete = prim;
         prim = prim->getNext();
-        prim->setPrev(NULL);
-        delete toDelete;
-        noLinii--;
-    }else if(index == this->getNoLinii()-1){
+        prim->setPrev(NULL);                                    //refacem legaturile dintre linii
+        delete toDelete;                                        //apelam destructorul
+        noLinii--;                                              //decrementam numarul de linii
+    }else if(index == this->getNoLinii()-1){                    //verificam daca este ultima linie
         Linie *toDelete = ultim;
-        ultim = ultim->getPrev();
+        ultim = ultim->getPrev();                               //refacem legaturile dintre linii
         ultim->setNext(NULL);
-        delete toDelete;
-        noLinii--;
-    }else if(prim == ultim){
+        delete toDelete;                                        //apelam destructorul
+        noLinii--;                                              //decrementam numarul de linii
+    }else if(prim == ultim){                                    //verificam daca linia contine doar un el
         Linie *toDelete = ultim;
         prim = ultim = NULL;
         delete toDelete;
         noLinii--;
     }else{
-        Linie *toDelete = prim;
-        for(int i = 0; i < index; i++){
+        Linie *toDelete = prim;                                 //cu ajutorul unui pointer catre prima linie
+        for(int i = 0; i < index; i++){                         //parcurgem matricea
             toDelete = toDelete->getNext();
         }
-        toDelete->getPrev()->setNext(toDelete->getNext());
+        toDelete->getPrev()->setNext(toDelete->getNext());      //refacem legaturile
         toDelete->getNext()->setPrev(toDelete->getPrev());
-        delete toDelete;
+        delete toDelete;                                        //apelam destructorul
         noLinii--;
     }
 }
 
 void Matrice::removeColAt(int index){
-    if(prim==NULL || index >= this->getNoCol() || index < 0){
-        //arunca exceptie
+    if(prim==NULL || index >= this->getNoCol() || index < 0){   //verificam daca indexul este in matrice
+        //arunca exceptie                                       //aruncam exceptie de out of range
     }else{
-        for(int i=0; i < this->getNoLinii(); i++){
-            (*this)[i].removeAt(index);
+        for(int i=0; i < this->getNoLinii(); i++){              //parcurgem linie cu linie si ne folosim de
+            (*this)[i].removeAt(index);                         //metoda removeAt() a Liniei.
         }
-        noCol--;
+        noCol--;                                                //decrementam nr de coloane
     }
 }
 
-void Matrice::removeAt(int indexLin, int indexCol){
+void Matrice::removeAt(int indexLin, int indexCol){             //ne folosim de cele doua metode deja create
     this->removeLineAt(indexLin);
     this->removeColAt(indexCol);
 }

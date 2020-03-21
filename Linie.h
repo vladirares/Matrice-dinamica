@@ -2,12 +2,12 @@
 using namespace std;
 
 class Linie{
-    Element *prim, *ultim;
-    Linie *next, *prev;
+    Element *prim, *ultim;      //pointeri catre primul si ultimul element din linie
+    Linie *next, *prev;         //pointeri catre linia urmatoare respectiv precedenta
     unsigned length;
 public:
-    Linie();
-    Linie(const Linie&);
+    Linie();                    //constructor fara param.
+    Linie(const Linie&);        //constructor de copiere
     void pushRight(int);
     void pushLeft(int);
     int popRight();
@@ -23,6 +23,6 @@ public:
     Linie* getPrev();
 
     Element& operator[](int);
-    friend ostream& operator<<(ostream& out,const Linie& line);
+    friend ostream& operator<<(ostream& out,const Linie& line); //supraincarcarea operatorului <<
     //~Linie();
 };

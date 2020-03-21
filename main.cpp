@@ -76,11 +76,6 @@ int main()
     cout<<endl;
     cout<<mat2;
 
-
-
-
-
-
     input.close();
 
     return 0;

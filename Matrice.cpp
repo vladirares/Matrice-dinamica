@@ -136,10 +136,12 @@ void Matrice::removeAt(int indexLin, int indexCol){             //ne folosim de 
 }
 
 Matrice& Matrice::operator=(const Matrice& mat){                //supraincarcarea operatorului =
-    this->noLinii=mat.noLinii;
-    this->noCol=mat.noCol;
-    this->prim = mat.prim;
-    this->ultim = mat.ultim;
+    Matrice *matrice = new Matrice(mat);                        //creem o noua matrice cu constructorul de copiere
+
+    this->noLinii=matrice->noLinii;
+    this->noCol=matrice->noCol;
+    this->prim = matrice->prim;
+    this->ultim = matrice->ultim;
 }
 
 Matrice& Matrice::operator+(const Matrice& mat){                                //supraincarcarea operatorului +

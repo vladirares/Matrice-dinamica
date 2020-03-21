@@ -35,14 +35,14 @@
 1584799501 d:\programming\projects\matrice\matrice-dinamica\linie.h
 	"Element.h"
 
-1584796229 source:d:\programming\projects\matrice\matrice-dinamica\matrice.cpp
+1584810199 source:d:\programming\projects\matrice\matrice-dinamica\matrice.cpp
 	<math.h>
 	"Matrice.h"
 
 1584801205 d:\programming\projects\matrice\matrice-dinamica\matrice.h
 	"Linie.h"
 
-1584796031 source:d:\programming\projects\matrice\matrice-dinamica\main.cpp
+1584810110 source:d:\programming\projects\matrice\matrice-dinamica\main.cpp
 	<iostream>
 	<fstream>
 	"Matrice.h"

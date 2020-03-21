@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1584786780 source:d:\programming\projects\matrice\element.cpp
+	"Element.h"
+
+1584786560 d:\programming\projects\matrice\element.h
+	<iostream>
+
+1584789763 source:d:\programming\projects\matrice\main.cpp
+	<iostream>
+	<fstream>
+	"Matrice.h"
+
+1584712869 d:\programming\projects\matrice\linie.h
+	"Element.h"
+
+1584787736 source:d:\programming\projects\matrice\linie.cpp
+	"Linie.h"
+
+1584792018 source:d:\programming\projects\matrice\matrice.cpp
+	<math.h>
+	"Matrice.h"
+
+1584789862 d:\programming\projects\matrice\matrice.h
+	"Linie.h"
+

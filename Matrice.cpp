@@ -17,9 +17,6 @@ Matrice::Matrice(int noLinii,int noCol,bool zeros){
             this->insertLine(*line);
         }
     }
-
-
-
 }
 
 Matrice::Matrice(const Matrice& mat){
@@ -294,5 +291,10 @@ ostream& operator<<(ostream& out, const Matrice& mat){
     }
     return out;
 }
+
+Matrice::~Matrice(){
+    cout<<"a fost stearsa"<<endl;
+}
+
 
 

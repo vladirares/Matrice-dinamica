@@ -28,5 +28,6 @@ public:
     friend istream& operator>>(istream&,Matrice&);
     friend ostream& operator<<(ostream&,const Matrice&);
 
+    ~Matrice();
 
 };

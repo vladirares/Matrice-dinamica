@@ -55,7 +55,7 @@ float Matrice::getDeterminant(){
     float det = 0;
     Matrice *subMat = new Matrice(this->getNoLinii(),this->getNoCol(),true);            //facem un pointer catre o matrice
     if(this->getNoCol() != this->getNoLinii()){                                         // daca matricea nu e patratica aruncam exceptie
-        //aruncam exceptie
+        throw runtime_error("Matrix is not square");
     }else if(this->getNoLinii() == 2){                                                  //cand ajungem la o matrice de 2x2 putem calcula determinantul
         return( ((*this)[0][0].getInfo()*(*this)[1][1].getInfo()) - ((*this)[1][0].getInfo()*(*this)[0][1].getInfo()));
     }else{
@@ -89,7 +89,7 @@ bool Matrice::isInvertible(){                   //daca determinantul este diferi
 
 void Matrice::removeLineAt(int index){
     if(prim==NULL || index >= this->getNoLinii() || index < 0){ //verificam daca indexul este in interiorul liniei
-        //arunca exceptie                                       //daca nu este aruncam exceptie de out of range
+        throw out_of_range ("Index out of bounds");             //daca nu este aruncam exceptie de out of range
     }else if(index == 0){                                       //verificam daca este prima linie
         Linie *toDelete = prim;
         prim = prim->getNext();
@@ -121,7 +121,7 @@ void Matrice::removeLineAt(int index){
 
 void Matrice::removeColAt(int index){
     if(prim==NULL || index >= this->getNoCol() || index < 0){   //verificam daca indexul este in matrice
-        //arunca exceptie                                       //aruncam exceptie de out of range
+        throw out_of_range ("Index out of bounds");             //aruncam exceptie de out of range
     }else{
         for(int i=0; i < this->getNoLinii(); i++){              //parcurgem linie cu linie si ne folosim de
             (*this)[i].removeAt(index);                         //metoda removeAt() a Liniei.
@@ -146,7 +146,7 @@ Matrice& Matrice::operator=(const Matrice& mat){                //supraincarcare
 
 Matrice& Matrice::operator+(const Matrice& mat){                                //supraincarcarea operatorului +
     if(this->noLinii != mat.noLinii || this->noCol != mat.noCol){               //verificam daca matricile sunt egale dpdv al noCol si noLinii
-        //arunca exceptie de matrici inegale
+        throw runtime_error("Different size matrix");
     }else{
         Matrice *aux = new Matrice(*this);                                      //facem un pointer catre o matrice copiata dupa cea care apeleaza
         Matrice *Mat = new Matrice(mat);                                        //pentru a putea folosi ulterior supraincarcarea lui [] (care nu este const)
@@ -174,7 +174,7 @@ Matrice& Matrice::operator+(const Matrice& mat){                                
 
 Linie& Matrice::operator[](int index){                                          //suprascrierea operatorului []
     if(index >= this->noLinii){                                                 //verificam daca indexul este in matrice
-        //arunca exceptie de index out of range
+        throw out_of_range ("Index out of bounds");
     }else{
         Linie *aux = this->prim;                                                //pointer catre prima linie din matrice
         for(int i=0;i<index;i++){                                               //parcurgem matricea
@@ -186,7 +186,7 @@ Linie& Matrice::operator[](int index){                                          
 
 Matrice& Matrice::operator-(const Matrice& mat){                                    //analog +
     if(this->noLinii != mat.noLinii || this->noCol != mat.noCol){
-        //arunca exceptie de matrici inegale
+        throw runtime_error("Different size matrix");
     }else{
         Matrice *aux = new Matrice(*this);
         Matrice *Mat = new Matrice(mat);
@@ -233,7 +233,7 @@ Matrice& Matrice::operator*(int scalar){                                    //su
 
 Matrice& Matrice::operator*(Matrice& mat){
     if(this->getNoCol() != mat.getNoLinii() ){
-        //aruncam exceptie
+        throw runtime_error("Left-matrix's number of col != Right-matrix number of lines");
     }else{
 
         Matrice *toReturn = new Matrice(this->getNoLinii(),mat.getNoCol(),true);                        //matricea finala are m1 linii si m2 col

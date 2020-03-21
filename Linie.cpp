@@ -51,7 +51,7 @@ void Linie::pushLeft(int value){                        //analog pushRight()
 
 int Linie::popRight(){                                  //metoda folosita pentru a scoate elemente
     if(prim==NULL){                                     //verificam daca linia este goala iar daca
-        //arunca exceptie                               //este aruncam exceptie
+        throw runtime_error("Pop from empty Line");     //este aruncam exceptie
     }else if(prim == ultim){                            //verificam daca are un singur element
         Element* toDelete = prim;
         prim = ultim = NULL;
@@ -68,7 +68,7 @@ int Linie::popRight(){                                  //metoda folosita pentru
 
 int Linie::popLeft(){                                   //analog popRight()
     if(prim==NULL){
-        //arunca exceptie
+        throw runtime_error("Pop from empty Line");
     }else if(prim == ultim){
         Element* toDelete = prim;
         prim = ultim = NULL;
@@ -85,7 +85,7 @@ int Linie::popLeft(){                                   //analog popRight()
 
 void Linie::removeAt(int index){
     if(prim==NULL || index >= this->getLength() || index < 0){  //verificam daca indexul este inafara liniei
-        //arunca exceptie                                       //iar daca este arunca exceptie
+        throw out_of_range ("Index out of bounds");             //iar daca este arunca exceptie
     }else if(index == 0){                                       //daca indexul este 0 putem apela popLeft()
         this->popLeft();
     }else if(index == this->getLength()-1){                     //analog popRight()
@@ -136,7 +136,7 @@ Linie* Linie::getPrev(){
 
 Element& Linie::operator[](int index){                  //supraincarcarea operatorului []
 if(index >= this->getLength()){
-        //arunca exceptie de index out of range         //daca indexul este inafara liniei
+        throw out_of_range ("Index out of bounds");     //daca indexul este inafara liniei
     }else{                                              //aruncam exceptie out of range
         Element *aux = this->prim;
         for(int i=0;i<index;i++){                       //altfel parcurgem linia cu un pointer

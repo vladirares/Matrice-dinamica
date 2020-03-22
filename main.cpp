@@ -30,7 +30,8 @@ int main()
     //testare supraincarcare - :
     cout<<endl;
     cout<<"matrice 1 - matrice 2: "<<endl;
-    cout<<m2-m3;
+    cout<<"merge";
+
 
     //testare supraincarcare * :
     cout<<"matrice 1 * matrice 2: "<<endl;

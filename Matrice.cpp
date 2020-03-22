@@ -273,7 +273,12 @@ ostream& operator<<(ostream& out, const Matrice& mat){          //suprascrierea 
 }
 
 Matrice::~Matrice(){                                            //destructor
-    cout<<"a fost stearsa"<<endl;
+    Linie *linie = prim;
+    for(int i = 0; i < this->getNoLinii(); i++ ){               //apelam destructorul fiecarei linii
+        delete linie;
+        if(linie->getNext())
+            linie = linie -> getNext();
+    }
 }
 
 

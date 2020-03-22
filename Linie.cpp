@@ -154,3 +154,9 @@ ostream& operator<<(ostream& out, const Linie& line){   //supraincarcarea operat
         el = el->getNext();
     }
 }
+
+Linie::~Linie(){
+    for(int i = 0; i < length ; i++ ){                  //stergem fiecare element pornind din dreapta
+        this->popLeft();
+    }
+}

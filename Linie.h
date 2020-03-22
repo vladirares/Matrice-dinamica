@@ -24,5 +24,5 @@ public:
 
     Element& operator[](int);
     friend ostream& operator<<(ostream& out,const Linie& line); //supraincarcarea operatorului <<
-    //~Linie();
+    ~Linie();
 };

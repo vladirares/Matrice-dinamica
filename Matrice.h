@@ -17,6 +17,8 @@ public:
     void removeColAt(int);
     void removeAt(int,int);                 //metoda care sterge o lininie si o coloana dintr-o matrice
 
+
+    bool operator == (const Matrice &mat);
     Matrice& operator=(const Matrice &mat); //supraincarcari de operatori
     Matrice& operator+(const Matrice &mat);
     Linie& operator[](int);

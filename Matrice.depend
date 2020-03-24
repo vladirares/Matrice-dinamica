@@ -23,27 +23,28 @@
 1584789862 d:\programming\projects\matrice\matrice.h
 	"Linie.h"
 
-1584811936 source:d:\programming\projects\matrice\matrice-dinamica\element.cpp
+1584900105 source:d:\programming\projects\matrice\matrice-dinamica\element.cpp
 	"Element.h"
 
-1584811936 d:\programming\projects\matrice\matrice-dinamica\element.h
+1584900105 d:\programming\projects\matrice\matrice-dinamica\element.h
 	<iostream>
 
-1584899715 source:d:\programming\projects\matrice\matrice-dinamica\linie.cpp
+1584900105 source:d:\programming\projects\matrice\matrice-dinamica\linie.cpp
 	"Linie.h"
 
-1584899420 d:\programming\projects\matrice\matrice-dinamica\linie.h
+1584900105 d:\programming\projects\matrice\matrice-dinamica\linie.h
 	"Element.h"
 
-1584811936 source:d:\programming\projects\matrice\matrice-dinamica\matrice.cpp
+1585062620 source:d:\programming\projects\matrice\matrice-dinamica\matrice.cpp
 	<math.h>
 	"Matrice.h"
 
-1584811936 d:\programming\projects\matrice\matrice-dinamica\matrice.h
+1585060641 d:\programming\projects\matrice\matrice-dinamica\matrice.h
 	"Linie.h"
 
-1584899089 source:d:\programming\projects\matrice\matrice-dinamica\main.cpp
+1585062744 source:d:\programming\projects\matrice\matrice-dinamica\main.cpp
 	<iostream>
 	<fstream>
+	<cassert>
 	"Matrice.h"
 

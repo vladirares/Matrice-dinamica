@@ -272,6 +272,24 @@ ostream& operator<<(ostream& out, const Matrice& mat){          //suprascrierea 
     return out;
 }
 
+bool Matrice::operator==(const Matrice& mat){
+    if(this->noLinii != mat.noLinii || this->noCol != mat.noCol){       //daca au nr diferit de linii/coloane
+        return false;
+    }else{
+        Matrice *copy = new Matrice(mat);
+            for(int i=0; i < this->getNoLinii(); i++){
+            for(int j=0; j < (*this)[i].getLength(); j++){              //comparam matricile element cu element
+                if((*this)[i][j].getInfo() != (*copy)[i][j].getInfo())
+                {
+                    return false;
+                }
+            }
+        }
+    return true;
+    }
+
+}
+
 Matrice::~Matrice(){                                            //destructor
     Linie *linie = prim;
     for(int i = 0; i < this->getNoLinii(); i++ ){               //apelam destructorul fiecarei linii

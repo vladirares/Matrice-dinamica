@@ -1,12 +1,55 @@
 #include <iostream>
 #include <fstream>
+#include <cassert>
 #include "Matrice.h"
 
 using namespace std;
 
-int main()
-{
+void testDeterminant(){
     ifstream input;
+    input.open("input2.txt");
+    Matrice m1(3,3),m2(3,3),m3(3,3);
+    input>>m1;
+    input>>m2;
+    input>>m3;
+
+    assert(m3.getDeterminant() == -176);
+
+    cout<<"determinant functional"<<endl;
+}
+
+void testStergereLiniiCol(){
+    ifstream input;
+    input.open("input2.txt");
+    Matrice m1(3,3),m2(3,3),m3(3,3),m4(2,2);
+    input>>m1;
+    input>>m2;
+    input>>m3;
+    input>>m4;
+    m3.removeAt(1,1);
+    assert(m3 == m4);
+
+    cout<<"stergere functionala"<<endl;
+}
+
+void testOperatorInmultire(){
+    ifstream input;
+    input.open("input2.txt");
+    Matrice m1(3,3),m2(3,3),m3(3,3),m4(2,2),m5(3,3),m6(3,3);
+    input>>m1;
+    input>>m2;
+    input>>m3;
+    input>>m4;
+    input>>m5;
+    input>>m6;
+    assert( m1 * m2 == m5);
+    assert (m1 * 3 == m6);
+
+    cout<<"inmultire functionala"<<endl;
+}
+
+void testAfisat(){
+     ifstream input;
     input.open("input.txt");
 
     //testare citire + scriere :
@@ -79,6 +122,29 @@ int main()
 
     input.close();
 
+}
+
+void testSupraincarcareOperatori(){
+    ifstream input;
+    input.open("input2.txt");
+    Matrice m1(3,3),m2(3,3),m3(3,3);
+    input>>m1;
+    input>>m2;
+    input>>m3;
+
+    assert((m1+m2)==m3);
+
+    cout<<"supraincarcare functionala"<<endl;
+}
+
+int main()
+{
+    testSupraincarcareOperatori();
+    testDeterminant();
+    testStergereLiniiCol();
+    testOperatorInmultire();
+
+    testAfisat();
     return 0;
 
 }
